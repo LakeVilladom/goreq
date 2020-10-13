@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/zhshch2002/goreq"
+
+	"github.com/lakevilladom/goreq"
 )
 
 func main() {

@@ -1,7 +1,7 @@
 # Goreq
-[![goproxy.cn](https://goproxy.cn/stats/github.com/zhshch2002/goreq/badges/download-count.svg)](https://goproxy.cn)
-![Go Test](https://github.com/zhshch2002/goreq/workflows/Go%20Test/badge.svg)
-[![codecov](https://codecov.io/gh/zhshch2002/goreq/branch/master/graph/badge.svg)](https://codecov.io/gh/zhshch2002/goreq)
+[![goproxy.cn](https://goproxy.cn/stats/github.com/lakevilladom/goreq/badges/download-count.svg)](https://goproxy.cn)
+![Go Test](https://github.com/lakevilladom/goreq/workflows/Go%20Test/badge.svg)
+[![codecov](https://codecov.io/gh/lakevilladom/goreq/branch/master/graph/badge.svg)](https://codecov.io/gh/lakevilladom/goreq)
 
 [中文文档](https://gospider.athorx.com/)
 
@@ -10,7 +10,7 @@
 > 让`net/http`为人类服务。
 
 ```shell script
-go get -u github.com/zhshch2002/goreq
+go get -u github.com/lakevilladom/goreq
 ```
 
 ## Feature
@@ -98,7 +98,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/zhshch2002/goreq"
+	"github.com/lakevilladom/goreq"
 )
 
 func main() {
@@ -136,7 +136,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/zhshch2002/goreq"
+	"github.com/lakevilladom/goreq"
 )
 
 func main() {

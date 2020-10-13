@@ -3,8 +3,9 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"github.com/zhshch2002/goreq"
 	"net/http"
+
+	"github.com/lakevilladom/goreq"
 )
 
 func main() {
