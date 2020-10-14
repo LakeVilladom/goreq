@@ -27,15 +27,15 @@ type ReqError struct {
 var ReqRejectedErr = errors.New("request is rejected")
 
 type Client struct {
-	cli        *http.Client
-	middleware []Middleware
-	handler    Handler
+	Cli        *http.Client
+	Middleware []Middleware
+	Handler    Handler
 }
 
 func NewClient(m ...Middleware) *Client {
 	j, _ := cookiejar.New(nil)
 	c := &Client{
-		cli: &http.Client{
+		Cli: &http.Client{
 			Jar: j,
 			Transport: &http.Transport{
 				Proxy: func(req *http.Request) (*url.URL, error) {
@@ -55,18 +55,18 @@ func NewClient(m ...Middleware) *Client {
 				return nil
 			},
 		},
-		middleware: []Middleware{},
+		Middleware: []Middleware{},
 	}
-	c.handler = basicHttpDo(c, nil)
+	c.Handler = basicHttpDo(c, nil)
 	c.Use(m...)
 	return c
 }
 
 func (s *Client) Use(m ...Middleware) *Client {
-	s.middleware = append(s.middleware, m...)
+	s.Middleware = append(s.Middleware, m...)
 	//s.handler = basicHttpDo(s, nil)
-	for i := 0; i < len(s.middleware); i++ {
-		s.handler = s.middleware[i](s, s.handler)
+	for i := 0; i < len(s.Middleware); i++ {
+		s.Handler = s.Middleware[i](s, s.Handler)
 	}
 	return s
 }
@@ -78,7 +78,7 @@ func (s *Client) Do(req *Request) *Response {
 			Err: ReqError{req.Err},
 		}
 	}
-	res := s.handler(req)
+	res := s.Handler(req)
 	if res == nil {
 		return &Response{
 			Req: req,
@@ -104,7 +104,7 @@ func basicHttpDo(c *Client, next Handler) Handler {
 			req.Request = req.Request.WithContext(context.WithValue(req.Request.Context(), "proxy", req.ProxyURL))
 		}
 
-		resp.Response, resp.Err = c.cli.Do(req.Request)
+		resp.Response, resp.Err = c.Cli.Do(req.Request)
 		if resp.Err != nil {
 			return resp
 		}
